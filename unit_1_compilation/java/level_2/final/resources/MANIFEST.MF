@@ -1,0 +1,2 @@
+Main-Class: ua.com.alevel.Hello_java
+Class-Path: commons-lang3-3.13.0.jar
