@@ -1,7 +1,7 @@
 package ua.com.alevel;
 import ua.com.alevel.test.MyMassage;
 import ua.com.alevel.depends.Depends;
-public class Hello_java {
+public class HelloJava {
     public static void main(String[] args){
         System.out.println("Hello Java!");
         //ua.com.alevel.test.MyMassage myMassage = new ua.com.alevel.test.MyMassage();
