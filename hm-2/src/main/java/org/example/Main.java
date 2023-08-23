@@ -8,7 +8,7 @@ public class Main {
         new task_two().taskTwo();
         System.out.println("Starting the third task");
         new task_three().taskThree();
-        System.out.println("sefwe ");
+
 
     }
 }
