@@ -6,6 +6,7 @@ public class HelloJava {
         System.out.println("Hello Java!");
         //ua.com.alevel.test.MyMassage myMassage = new ua.com.alevel.test.MyMassage();
         MyMassage myMassage = new MyMassage();
+
         byte b = Byte.MAX_VALUE;
         byte b1 = Byte.MIN_VALUE;
         short s = Short.MAX_VALUE;
