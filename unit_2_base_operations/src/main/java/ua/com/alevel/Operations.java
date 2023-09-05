@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 public class Operations {
     public void circle() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
         int x = 20;
         System.out.println("x = " + (++x));
         System.out.println("x = " + x);
@@ -27,8 +26,6 @@ public class Operations {
             System.out.println("ints = " + ints[st]);
             ++st;
         }
-
-
         try {
             String text;
             while ((text = bufferedReader.readLine()) != null) {
@@ -42,7 +39,6 @@ public class Operations {
 
     public void ifSwitch() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
         try {
             int number = Integer.parseInt(bufferedReader.readLine());
             if (number < 10) {
@@ -55,10 +51,5 @@ public class Operations {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-
-
     }
 }
-

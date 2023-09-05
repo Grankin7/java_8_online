@@ -37,15 +37,6 @@ public class PrimitiveType {
         System.out.println(2.0 - 1.1);
 
         System.out.println(iMax + 1);
-//        BigInteger maxInt = new BigInteger(String.valueOf(Integer.MAX_VALUE));
-//        BigInteger one = new BigInteger("1");
-//        BigInteger resInt = maxInt.add(one);
-//        System.out.println("resInt = " + resInt);
-
-//        BigDecimal left = new BigDecimal("2.0");
-//        BigDecimal right = new BigDecimal("1.1");
-//        BigDecimal sub = left.subtract(right);
-//        System.out.println("sub = " + sub);
 
         char cChar100 = 100;
         char cChar49 = '1';
