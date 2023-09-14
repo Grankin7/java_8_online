@@ -1,5 +1,6 @@
 package ua.com.alevel.controller;
 
+import ua.com.alevel.db.BuilderDb;
 import ua.com.alevel.entity.Builders;
 import ua.com.alevel.service.BuildsService;
 
@@ -42,7 +43,7 @@ public class MainController {
             case "3" -> delete(bufferedReader);
             case "4" -> creatTeam(bufferedReader);
             case "5" -> deleteTeam();
-            case "6" -> addToTeam();
+            case "6" -> addToTeam(bufferedReader);
             case "7" -> lockAllBuildersInTeam();
             case "8" -> System.exit(0);
 
@@ -59,8 +60,18 @@ public class MainController {
     private void deleteTeam() {
     }
 
-    private void addToTeam() {
-
+    private void addToTeam(BufferedReader reader) throws IOException {
+        getIds();
+        System.out.println("Напиши имя тимы");
+        String nameTeame = reader.readLine();
+        System.out.println("Напиши количество лютей в бригаде");
+        int countTeame =  Integer.parseInt(reader.readLine());
+        int[] ids = new int[countTeame];
+        for (int i = 0; i < ids.length; i++) {
+            System.out.println("Напишите ID ");
+            ids[i] = scanner.nextInt();
+        }
+        buildsService.createTeam(ids, nameTeame);
     }
 
     private void create(BufferedReader reader) throws IOException {
@@ -80,10 +91,7 @@ public class MainController {
         getIds();
         System.out.println("Напишите ID строителя ");
         int idBuild = Integer.parseInt(reader.readLine());
-        if(true) {
-            System.out.println("чет работает");
-        }
-
+        buildsService.delete(idBuild);
     }
 
     private void creatTeam(BufferedReader reader) throws IOException {
@@ -97,7 +105,7 @@ public class MainController {
         for (int i = 0; i < builders.length; i++) {
             Builders builder = builders[i];
             if (builder != null) {
-                System.out.println( (i + 1) + ") Имя: " + builders[i].getFirstname());
+                System.out.println("Имя: " + builders[i].getFirstname());
                 System.out.println("Фамилия: " + builders[i].getLastname());
                 System.out.println("Специализация: " + builders[i].getSpecialization());
                 System.out.println("Лет опыта: " + builders[i].getYearsOfExperience());

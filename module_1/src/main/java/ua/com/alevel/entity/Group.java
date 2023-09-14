@@ -10,6 +10,11 @@ public class Group {
         this.nameGroup = nameGroup;
     }
 
+    public Group(String nameGroup, Builders[] builders){
+        nameGroup = nameGroup;
+        builders = builders;
+    }
+
     Builders[] builders = null;
     public void addBuilders(Builders[] buildersArray) {
         if (builders == null) {builders = buildersArray;}

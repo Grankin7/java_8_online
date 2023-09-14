@@ -1,11 +1,13 @@
 package ua.com.alevel.service;
 
-import ua.com.alevel.db.DataBase;
+import ua.com.alevel.db.BuilderDb;
+import ua.com.alevel.db.GroupBd;
 import ua.com.alevel.entity.Builders;
 import ua.com.alevel.entity.Group;
 
 public class BuildsService {
-    private static DataBase dataBase = new DataBase();
+    private BuilderDb dataBase = new BuilderDb();
+    private GroupBd groupDb = new GroupBd();
     public void create(String firstname, String lastname, String specialization, int yearsOfExperience, int id) {
         Builders builder = new Builders();
         builder.setFirstname(firstname);
@@ -17,10 +19,10 @@ public class BuildsService {
     }
 
 
-    public void createTeam(String nameTeam) {
-        Group group = new Group();
-        group.setNameGroup(nameTeam);
-        dataBase.creatTeam(group);
+    public void createTeam(int[] ids, String nameTeam) {
+        Builders[] builders = dataBase.searchByIds(ids);
+        groupDb.creatTeam(builders,nameTeam);
+
     }
 
     public Builders[] findAll() {
@@ -28,6 +30,7 @@ public class BuildsService {
     }
 
     public void delete(int id){
+        dataBase.delete(id);
 
     }
 
