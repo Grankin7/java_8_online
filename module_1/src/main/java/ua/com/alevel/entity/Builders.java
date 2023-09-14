@@ -1,10 +1,19 @@
 package ua.com.alevel.entity;
 
-public class Builders extends BaseEntity{
+public class Builders {
     private String firstname;
     private String lastname;
     private String specialization;
     private int yearsOfExperience;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;

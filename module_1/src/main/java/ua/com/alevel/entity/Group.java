@@ -1,12 +1,17 @@
 package ua.com.alevel.entity;
 
-public class Group extends BaseEntity {
-    private String name;
-    public String getName() {
-        return name;
+public class Group {
+    private String nameGroup;
+    public String getNameGroup() {
+        return nameGroup;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameGroup(String nameGroup) {
+        this.nameGroup = nameGroup;
+    }
+
+    Builders[] builders = null;
+    public void addBuilders(Builders[] buildersArray) {
+        if (builders == null) {builders = buildersArray;}
     }
 }

@@ -2,9 +2,7 @@ package ua.com.alevel.db;
 import ua.com.alevel.entity.Builders;
 import ua.com.alevel.entity.Group;
 
-import java.util.Locale;
-
-public class BuildDb {
+public class DataBase {
     private Builders[] builds = new Builders[10];
 
     public void create(Builders builder) {
@@ -20,14 +18,19 @@ public class BuildDb {
         return builds;
     }
 
-    private static Group[] groups = new Group[10];
+    private Group[] groups = new Group[10];
 
-    public void creatTeam(Builders builder) {
+    public void creatTeam(Group gro) {
         for (int i = 0; i < builds.length; i++) {
-            if (builds[i] == null) {
-                builds[i] = builder;
+            if (groups[i] == null) {
+                groups[i] = gro;
                 break;
             }
+        }
+    }
+
+    public void delete(int id){
+        for (int i = 0; i < builds.length; i++) {
         }
     }
 }

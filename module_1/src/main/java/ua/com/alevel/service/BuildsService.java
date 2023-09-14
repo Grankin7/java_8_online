@@ -1,25 +1,34 @@
 package ua.com.alevel.service;
 
-import ua.com.alevel.db.BuildDb;
+import ua.com.alevel.db.DataBase;
 import ua.com.alevel.entity.Builders;
+import ua.com.alevel.entity.Group;
 
 public class BuildsService {
-    private static BuildDb buildDb = new BuildDb();
-    public static void create(String firstname, String lastname, String specialization, int yearsOfExperience) {
+    private static DataBase dataBase = new DataBase();
+    public void create(String firstname, String lastname, String specialization, int yearsOfExperience, int id) {
         Builders builder = new Builders();
         builder.setFirstname(firstname);
         builder.setLastname(lastname);
         builder.setSpecialization(specialization);
         builder.setYearsOfExperience(yearsOfExperience);
-        buildDb.create(builder);
+        builder.setId(id);
+        dataBase.create(builder);
     }
 
-    public static void createTeam(String nameTeam) {
 
+    public void createTeam(String nameTeam) {
+        Group group = new Group();
+        group.setNameGroup(nameTeam);
+        dataBase.creatTeam(group);
     }
 
     public Builders[] findAll() {
-        return buildDb.findAll();
+        return dataBase.findAll();
+    }
+
+    public void delete(int id){
+
     }
 
 }
