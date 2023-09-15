@@ -24,7 +24,7 @@
     </dependencies>
 
     <build>
-        <finalName>finish_oop</finalName>
+        <finalName>Main</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
