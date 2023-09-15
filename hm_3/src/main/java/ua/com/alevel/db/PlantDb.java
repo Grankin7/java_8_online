@@ -16,7 +16,7 @@ public class PlantDb {
     }
     public void delete(String delPlant) {
         for (int i = 0; i < plants.length; i++) {
-            if(plants[i] != null && delPlant == plants[i].getNamePlant()) {
+            if(plants[i] != null && delPlant.equals(plants[i].getNamePlant()) ) {
                 plants[i] = null;
                 break;
             }
