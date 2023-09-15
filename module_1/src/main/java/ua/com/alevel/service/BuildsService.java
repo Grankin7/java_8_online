@@ -28,10 +28,19 @@ public class BuildsService {
     public Builders[] findAll() {
         return dataBase.findAll();
     }
+    public Builders[] lockAllBuildersInTeam() {
+        return dataBase.lockAllBuildersInTeam();
+    }
+    public Group[] lockAllGroup(){
+        return groupDb.lockAllBuildersInTeam();
+    }
 
     public void delete(int id){
         dataBase.delete(id);
+    }
 
+    public void deleteTeam(String teamRemote) {
+        groupDb.deleteTeam(teamRemote);
     }
 
 }

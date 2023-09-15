@@ -19,6 +19,7 @@ public class BuilderDb {
     public Builders[] findAll() {
         return builds;
     }
+    public Builders[] lockAllBuildersInTeam() { return builds; }
 
     public void delete(int id){
         for (int i = 0; i < builds.length; i++) {

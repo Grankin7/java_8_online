@@ -2,6 +2,7 @@ package ua.com.alevel.controller;
 
 import ua.com.alevel.db.BuilderDb;
 import ua.com.alevel.entity.Builders;
+import ua.com.alevel.entity.Group;
 import ua.com.alevel.service.BuildsService;
 
 import java.io.BufferedReader;
@@ -31,7 +32,7 @@ public class MainController {
         System.out.println("Если вы хотите удалить строителля нажмите 3");
         System.out.println("Если вы хотите создать бригаду нажмите 4");
         System.out.println("Если вы хотите удалить бригаду нажмите 5");
-        System.out.println("Если вы хотите добавить строителя в бригаду нажмите 6");
+        System.out.println("Если вы хотите создать бригаду и добавить строителя в бригаду нажмите 6");
         System.out.println("Если вы хотите посмотреть на список бригад со строителями нажмите 7");
         System.out.println("Если вы хотите выйти нажмите 8");
     }
@@ -42,9 +43,9 @@ public class MainController {
             case "2" -> findAll();
             case "3" -> delete(bufferedReader);
             case "4" -> creatTeam(bufferedReader);
-            case "5" -> deleteTeam();
+            case "5" -> deleteTeam(bufferedReader);
             case "6" -> addToTeam(bufferedReader);
-            case "7" -> lockAllBuildersInTeam();
+            case "7" -> lockAllBuildersInTeam(bufferedReader);
             case "8" -> System.exit(0);
 
         }
@@ -52,19 +53,30 @@ public class MainController {
     }
 
 
-    private void lockAllBuildersInTeam() {
+    private void lockAllBuildersInTeam(BufferedReader reader) throws IOException {
+//        Builders[] builders = buildsService.lockAllBuildersInTeam();
+        Group[] groups = buildsService. lockAllGroup();
+        for (int i = 0; i < groups.length; i++) {
+            Group teame = groups[i];
+            if(teame != null){
+                System.out.println("Бригада: " + groups[i].getNameGroup());
+            }
+        }
     }
 
 
 
-    private void deleteTeam() {
+    private void deleteTeam(BufferedReader reader) throws IOException {
+        System.out.println("Напишите название бригады, которую хотите удалить");
+        String remoteTeam = reader.readLine();
+
     }
 
     private void addToTeam(BufferedReader reader) throws IOException {
         getIds();
-        System.out.println("Напиши имя тимы");
+        System.out.println("Напишите название бригады");
         String nameTeame = reader.readLine();
-        System.out.println("Напиши количество лютей в бригаде");
+        System.out.println("Напиши количество лютей которое будет в бригаде");
         int countTeame =  Integer.parseInt(reader.readLine());
         int[] ids = new int[countTeame];
         for (int i = 0; i < ids.length; i++) {
@@ -113,6 +125,7 @@ public class MainController {
                 System.out.println("_____________________");
             }
         }
+
     }
     private void getIds() {
         Builders[] builders = buildsService.findAll();

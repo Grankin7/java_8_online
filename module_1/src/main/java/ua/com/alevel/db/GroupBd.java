@@ -16,4 +16,15 @@ public class GroupBd {
             }
         }
     }
+
+    public Group[] lockAllBuildersInTeam() { return groups; }
+
+    public void deleteTeam(String deleteGroup) {
+        for(int i = 0; i < groups.length; i++){
+            if(deleteGroup == groups[i].getNameGroup()){
+                groups[i] = null;
+                break;
+            }
+        }
+    }
 }
