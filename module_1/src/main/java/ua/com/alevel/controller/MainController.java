@@ -30,11 +30,10 @@ public class MainController {
         System.out.println("Если вы хотите создать строителя нажмите 1");
         System.out.println("Если вы хотите посмотреть строителля нажмите 2");
         System.out.println("Если вы хотите удалить строителля нажмите 3");
-        System.out.println("Если вы хотите создать бригаду нажмите 4");
-        System.out.println("Если вы хотите удалить бригаду нажмите 5");
-        System.out.println("Если вы хотите создать бригаду и добавить строителя в бригаду нажмите 6");
-        System.out.println("Если вы хотите посмотреть на список бригад со строителями нажмите 7");
-        System.out.println("Если вы хотите выйти нажмите 8");
+        System.out.println("Если вы хотите удалить бригаду нажмите 4");
+        System.out.println("Если вы хотите создать бригаду и добавить строителя в бригаду нажмите 5");
+        System.out.println("Если вы хотите посмотреть на список бригад со строителями нажмите 6");
+        System.out.println("Если вы хотите выйти нажмите 7");
     }
 
     private void crud(String position, BufferedReader bufferedReader) throws IOException {
@@ -42,11 +41,10 @@ public class MainController {
             case "1" -> create(bufferedReader);
             case "2" -> findAll();
             case "3" -> delete(bufferedReader);
-            case "4" -> creatTeam(bufferedReader);
-            case "5" -> deleteTeam(bufferedReader);
-            case "6" -> addToTeam(bufferedReader);
-            case "7" -> lockAllBuildersInTeam(bufferedReader);
-            case "8" -> System.exit(0);
+            case "4" -> deleteTeam(bufferedReader);
+            case "5" -> addToTeam(bufferedReader);
+            case "6" -> lockAllBuildersInTeam(bufferedReader);
+            case "7" -> System.exit(0);
 
         }
 
@@ -69,6 +67,7 @@ public class MainController {
     private void deleteTeam(BufferedReader reader) throws IOException {
         System.out.println("Напишите название бригады, которую хотите удалить");
         String remoteTeam = reader.readLine();
+        buildsService.deleteTeam(remoteTeam);
 
     }
 

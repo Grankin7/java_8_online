@@ -23,17 +23,25 @@ public class PlantController {
 
     private void menu() {
         System.out.println(" ");
-        System.out.println("If you want create plant please enter 1");
-        System.out.println("If you want find plant please enter 2");
-        System.out.println("If you want close app please enter 3");
+        System.out.println("If you want create plant enter 1");
+        System.out.println("If you want find plant enter 2");
+        System.out.println("If you want delete enter 3");
+        System.out.println("If you want close app enter 4");
     }
 
     private void crud(String position, BufferedReader bufferedReader) throws IOException {
         switch (position) {
             case "1" -> create(bufferedReader);
             case "2" -> findAll();
-            case "3" -> System.exit(0);
+            case "3" -> delete(bufferedReader);
+            case "4" -> System.exit(0);
         }
+    }
+
+    public void delete(BufferedReader reader) throws IOException{
+        System.out.println("Write the name of the plant you want to remove");
+        String delPlant = reader.readLine();
+        plantService.delete(delPlant);
     }
 
     private void create(BufferedReader reader) throws IOException {

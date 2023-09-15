@@ -10,9 +10,9 @@ public class Group {
         this.nameGroup = nameGroup;
     }
 
-    public Group(String nameGroup, Builders[] builders){
-        nameGroup = nameGroup;
-        builders = builders;
+    public Group(String nameTeame, Builders[] people){
+        nameGroup = nameTeame;
+        builders = people;
     }
 
     Builders[] builders = null;

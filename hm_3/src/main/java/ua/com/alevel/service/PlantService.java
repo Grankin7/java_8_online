@@ -14,6 +14,9 @@ public class PlantService {
        plant.setAge(age);
        plantDb.create(plant);
    }
+   public void delete(String plant){
+       plantDb.delete(plant);
+   }
 
    public Plant[] findAll() {
        return plantDb.findAll();

@@ -3,6 +3,8 @@ package ua.com.alevel.db;
 import ua.com.alevel.entity.Builders;
 import ua.com.alevel.entity.Group;
 
+import java.lang.reflect.Array;
+
 public class GroupBd {
 
     private Group[] groups = new Group[10];
@@ -21,10 +23,13 @@ public class GroupBd {
 
     public void deleteTeam(String deleteGroup) {
         for(int i = 0; i < groups.length; i++){
-            if(deleteGroup == groups[i].getNameGroup()){
+            if(groups[i] != null && deleteGroup.equals(groups[i].getNameGroup())){
                 groups[i] = null;
-                break;
+            }
+
+
+
             }
         }
     }
-}
+
