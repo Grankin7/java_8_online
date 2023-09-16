@@ -32,7 +32,7 @@ public class MainController {
         System.out.println("Если вы хотите удалить строителля нажмите 3");
         System.out.println("Если вы хотите удалить бригаду нажмите 4");
         System.out.println("Если вы хотите создать бригаду и добавить строителя в бригаду нажмите 5");
-        System.out.println("Если вы хотите посмотреть на список бригад со строителями нажмите 6");
+        System.out.println("Если вы хотите посмотреть на список бригад 6");
         System.out.println("Если вы хотите выйти нажмите 7");
     }
 
@@ -52,7 +52,7 @@ public class MainController {
 
 
     private void lockAllBuildersInTeam(BufferedReader reader) throws IOException {
-//        Builders[] builders = buildsService.lockAllBuildersInTeam();
+        Builders[] builders = buildsService.lockAllBuildersInTeam();
         Group[] groups = buildsService. lockAllGroup();
         for (int i = 0; i < groups.length; i++) {
             Group teame = groups[i];
@@ -60,9 +60,8 @@ public class MainController {
                 System.out.println("Бригада: " + groups[i].getNameGroup());
             }
         }
+
     }
-
-
 
     private void deleteTeam(BufferedReader reader) throws IOException {
         System.out.println("Напишите название бригады, которую хотите удалить");
@@ -75,7 +74,7 @@ public class MainController {
         getIds();
         System.out.println("Напишите название бригады");
         String nameTeame = reader.readLine();
-        System.out.println("Напиши количество лютей которое будет в бригаде");
+        System.out.println("Напиши количество людей которое будет в бригаде");
         int countTeame =  Integer.parseInt(reader.readLine());
         int[] ids = new int[countTeame];
         for (int i = 0; i < ids.length; i++) {
@@ -106,7 +105,6 @@ public class MainController {
     }
 
     private void creatTeam(BufferedReader reader) throws IOException {
-
         System.out.println("Напишите название бригады");
         String nameTeam = reader.readLine();
     }
