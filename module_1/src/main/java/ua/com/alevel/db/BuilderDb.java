@@ -16,9 +16,11 @@ public class BuilderDb {
             }
         }
     }
+
     public Builders[] findAll() {
         return builds;
     }
+
     public Builders[] lockAllBuildersInTeam() { return builds; }
 
     public void delete(int id){
@@ -29,6 +31,7 @@ public class BuilderDb {
             }
         }
     }
+
     public Builders[] searchByIds(int[] ids){
         Builders[] response = new Builders[ids.length];
         for (int i = 0, j = 0; i < builds.length ; i++) {
@@ -39,5 +42,4 @@ public class BuilderDb {
         }
         return response;
     }
-
 }
