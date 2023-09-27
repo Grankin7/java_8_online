@@ -17,6 +17,7 @@ public class HandControl {
         }
         return persons;
     }
+
     public void handShake(Person[] persons) {
             for (int i = 0; i < persons.length; i++) {
                if(i == 0) {
@@ -34,9 +35,4 @@ public class HandControl {
                persons[i + 1].setHandShaked(true);
             }
     }
-
-
-
 }
-
-

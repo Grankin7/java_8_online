@@ -8,6 +8,7 @@ import ua.com.alevel.entity.Group;
 public class BuildsService {
     private BuilderDb dataBase = new BuilderDb();
     private GroupBd groupDb = new GroupBd();
+
     public void create(String firstname, String lastname, String specialization, int yearsOfExperience, int id) {
         Builders builder = new Builders();
         builder.setFirstname(firstname);
@@ -18,29 +19,29 @@ public class BuildsService {
         dataBase.create(builder);
     }
 
-
     public void createTeam(int[] ids, String nameTeam) {
         Builders[] builders = dataBase.searchByIds(ids);
-        groupDb.creatTeam(builders,nameTeam);
+        groupDb.creatTeam(builders, nameTeam);
 
     }
 
     public Builders[] findAll() {
         return dataBase.findAll();
     }
+
     public Builders[] lockAllBuildersInTeam() {
         return dataBase.lockAllBuildersInTeam();
     }
-    public Group[] lockAllGroup(){
+
+    public Group[] lockAllGroup() {
         return groupDb.lockAllBuildersInTeam();
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         dataBase.delete(id);
     }
 
     public void deleteTeam(String teamRemote) {
         groupDb.deleteTeam(teamRemote);
     }
-
 }

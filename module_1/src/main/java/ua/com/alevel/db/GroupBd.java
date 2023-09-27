@@ -10,7 +10,7 @@ public class GroupBd {
     private Group[] groups = new Group[10];
 
     public void creatTeam(Builders[] builds, String groupName) {
-        Group newGroup = new Group(groupName,builds);
+        Group newGroup = new Group(groupName, builds);
         for (int i = 0; i < groups.length; i++) {
             if (groups[i] == null) {
                 groups[i] = newGroup;
@@ -19,15 +19,15 @@ public class GroupBd {
         }
     }
 
-    public Group[] lockAllBuildersInTeam() { return groups; }
+    public Group[] lockAllBuildersInTeam() {
+        return groups;
+    }
 
     public void deleteTeam(String deleteGroup) {
-        for(int i = 0; i < groups.length; i++){
-            if(groups[i] != null && deleteGroup.equals(groups[i].getNameGroup())){
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i] != null && deleteGroup.equals(groups[i].getNameGroup())) {
                 groups[i] = null;
-            }
-
             }
         }
     }
-
+}
