@@ -33,18 +33,17 @@ public class Controller {
         System.out.println("6 - об'єднує з іншими MatList");
         System.out.println("7 -  об'єднує з іншими MatList, залишаючи тільки ті елементи, які є в усіх колекціях");
         System.out.println("8 -  сортує колекцію від найбільшого");
+        System.out.println("9 -  сортує колекцію від найбільшого тільки ті елементи, які лежать між firstIndex та lastIndex");
+//        System.out.println("10 - сортує колекцію від найбільшого починаючи з value");
+        System.out.println("11 -  сортує колекцію від найменшого");
+        System.out.println("12 - сортує колекцію від найменшого тільки ті елементи, які лежать між firstIndex та lastIndex");
+//        System.out.println("13 - сортує колекцію від найменшого починаючи з value");
+        System.out.println("14 - вивести значення по index");
+        System.out.println("15 - вивести максимальне значення");
+        System.out.println("16 - вивести мінімальне значення");
+        System.out.println("17 - віддає середнє значення");
+        System.out.println("18 - віддає медіану");
 
-//        System.out.println("7 -  сортує колекцію від найбільшого тільки ті елементи, які лежать між firstIndex та lastIndex");
-//        System.out.println("8 - сортує колекцію від найбільшого починаючи з value");
-//        System.out.println("9 -  сортує колекцію від найменшого");
-//        System.out.println("10 - сортує колекцію від найменшого тільки ті елементи, які лежать між firstIndex та lastIndex");
-//
-//        System.out.println("10 - сортує колекцію від найменшого починаючи з value");
-//        System.out.println("11 - ");
-//        System.out.println("12 - ");
-//        System.out.println("13 - ");
-//        System.out.println("14 - віддає середнє значення");
-//        System.out.println("15 - віддає медіану");
 //        System.out.println("16 - ");
 //        System.out.println("17 - ");
 //        System.out.println("18 - вирізає з firstIndex по lastIndex");
@@ -62,12 +61,98 @@ public class Controller {
             case "6" -> joinMatList();
             case "7" -> intersection();
             case "8" -> sortDesc();
+            case "9" -> sortDescByIndex();
+
+            case "11" -> sortAsc();
+            case "12" -> sortAscByIndex();
+
+            case "14" -> get();
+            case "15" -> getMax();
+            case "16" -> getMin();
+            case "17" -> getAverage();
+            case "18" -> getMedian();
         }
 
     }
 
-    public  void sortDesc() {
+    public void getMedian(){
+        matList.print();
+        System.out.println(" ");
 
+        matList.getMedian();
+    }
+
+    public void getAverage(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Середнє значення: ");
+        matList.getAverage();
+    }
+
+    public void getMin(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Найменше значення: ");
+        matList.getMin();
+    }
+
+    public void getMax(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Найбільше значення: ");
+        matList.getMax();
+    }
+
+    public void get(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши index значення якого хочешь отримати");
+        int index = scanner.nextInt();
+        matList.get(index);
+    }
+
+    public void sortAscByIndex(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши перший індекс");
+        int firstIndex = scanner.nextInt();
+        System.out.println("Напиши другий індекс");
+        int lastIndex = scanner.nextInt();
+        matList.sortDesc(firstIndex, lastIndex);
+        matList.sortAsc();
+//        matList.sortAscByIndex(firstIndex, lastIndex);
+        matList.print();
+    }
+
+    public void sortAsc(){
+        matList.sortAsc();
+        matList.print();
+    }
+
+    public void sortDescByValue() {
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши value");
+        int value = scanner.nextInt();
+        matList.sortDesc(value);
+        matList.print();
+    }
+
+    public void sortDescByIndex() {
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши перший індекс");
+        int firstIndex = scanner.nextInt();
+        System.out.println("Напиши другий індекс");
+        int lastIndex = scanner.nextInt();
+        matList.sortDesc(firstIndex, lastIndex);
+        matList.sortDesc();
+        matList.print();
+    }
+
+    public  void sortDesc() {
+        matList.sortDesc();
+        matList.print();
     }
 
     public void intersection() {
@@ -82,10 +167,12 @@ public class Controller {
     public void createSecondMatList(){
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
+
         int[] array = new int[sizeArray];;
         for(int i = 0; i < sizeArray; i++) {
-            array[i] = new Random().nextInt(10);
+            array[i] = new Random().nextInt(20);
         }
+
         System.out.print("Ваш массив: ");
         secondMatList = new MatList(array);
         secondMatList.print();
@@ -94,6 +181,7 @@ public class Controller {
     public void addElements() {
         System.out.println("Напиши кількість елементів");
         int sizeArray = scanner.nextInt();
+
         int[] array = new int[sizeArray];
         System.out.println("Напиши елементи массиву через space");
         for (int i = 0; i < sizeArray; i++) {
@@ -107,11 +195,13 @@ public class Controller {
     public void createArray() {
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
+
         int[] array = new int[sizeArray];
         System.out.println("Напиши елементи массиву через space");
         for (int i = 0; i < sizeArray; i++) {
             array[i] = scanner.nextInt();
         }
+
         System.out.println("Ваш массив: ");
         for (int i = 0; i < sizeArray; i++){
             System.out.print(" " + array[i]);
@@ -122,15 +212,16 @@ public class Controller {
     public void createRandomArray() {
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
+
         int[] array = new int[sizeArray];
         for(int i = 0; i < sizeArray; i++) {
-            array[i] = new Random().nextInt(10);
+            array[i] = new Random().nextInt(20);
         }
+
         System.out.println("Ваш массив: ");
         for (int i = 0; i < sizeArray; i++) {
             System.out.print(" " + array[i]);
         }
-
         matList = new MatList(array);
     }
 
