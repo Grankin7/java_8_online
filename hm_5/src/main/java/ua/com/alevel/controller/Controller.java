@@ -44,9 +44,9 @@ public class Controller {
         System.out.println("17 - віддає середнє значення");
         System.out.println("18 - віддає медіану");
 
-//        System.out.println("16 - ");
+        System.out.println("19- ");
 //        System.out.println("17 - ");
-//        System.out.println("18 - вирізає з firstIndex по lastIndex");
+        System.out.println("21 - вирізає з firstIndex по lastIndex");
 //        System.out.println("19 - удаляє всі елементи");
 //        System.out.println("20 - удаляє елемент по индексу ");
     }
@@ -71,22 +71,33 @@ public class Controller {
             case "16" -> getMin();
             case "17" -> getAverage();
             case "18" -> getMedian();
+
+            case "21" ->  cut();
         }
 
+    }
+
+    public void  cut(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши перший індекс");
+        int firstIndex = scanner.nextInt();
+        System.out.println("Напиши другий індекс");
+        int lastIndex = scanner.nextInt();
+        System.out.println(matList.sortDesc(firstIndex, lastIndex));
     }
 
     public void getMedian(){
         matList.print();
         System.out.println(" ");
-
-        matList.getMedian();
+        System.out.println(matList.getMedian());
     }
 
     public void getAverage(){
         matList.print();
         System.out.println(" ");
         System.out.println("Середнє значення: ");
-        matList.getAverage();
+        System.out.println(matList.getAverage());
     }
 
     public void getMin(){
@@ -168,13 +179,13 @@ public class Controller {
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
 
-        int[] array = new int[sizeArray];;
+        Integer[] array = new Integer[sizeArray];;
         for(int i = 0; i < sizeArray; i++) {
             array[i] = new Random().nextInt(20);
         }
 
         System.out.print("Ваш массив: ");
-        secondMatList = new MatList(array);
+        secondMatList = new MatList<Integer>(array);
         secondMatList.print();
     }
 
@@ -182,7 +193,7 @@ public class Controller {
         System.out.println("Напиши кількість елементів");
         int sizeArray = scanner.nextInt();
 
-        int[] array = new int[sizeArray];
+        Integer[] array = new Integer[sizeArray];
         System.out.println("Напиши елементи массиву через space");
         for (int i = 0; i < sizeArray; i++) {
             array[i] = scanner.nextInt();
@@ -196,7 +207,7 @@ public class Controller {
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
 
-        int[] array = new int[sizeArray];
+        Integer[] array = new Integer[sizeArray];
         System.out.println("Напиши елементи массиву через space");
         for (int i = 0; i < sizeArray; i++) {
             array[i] = scanner.nextInt();
@@ -213,7 +224,7 @@ public class Controller {
         System.out.println("Напиши розмір массиву");
         int sizeArray = scanner.nextInt();
 
-        int[] array = new int[sizeArray];
+        Integer[] array = new Integer[sizeArray];
         for(int i = 0; i < sizeArray; i++) {
             array[i] = new Random().nextInt(20);
         }

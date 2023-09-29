@@ -9,6 +9,7 @@ public class Main {
         Controller controller = new Controller();
         controller.start();
 
-
+        Test t = new Test<Number>();
+        t.getX();
     }
 }
