@@ -2,7 +2,7 @@ package ua.com.alevel.matList;
 
 import java.lang.reflect.Array;
 
-public class MatList<E extends Number> {
+public class MatList<E extends Number>  {
 
     public MatList(){}
     public MatList(MatList<E> matList){
@@ -27,6 +27,22 @@ public class MatList<E extends Number> {
             }
         }
         return array;
+    }
+
+    public void sortAsc(E value){
+        E x;
+        for (int k = 0; k < array.length; k++) {
+            if(array[k] == value)
+                for (int i = k; i < array.length; i++) {
+                    for (int j = i + 1; j < array.length; j++) {
+                        if(array[j].doubleValue() < array[i].doubleValue()){
+                            x = array[i];
+                            array[i] = array[j];
+                            array[j] = x;
+                        }
+                    }
+                }
+        }
     }
 
     public void getMax(){
@@ -85,7 +101,20 @@ public class MatList<E extends Number> {
         return array;
     }
 
-    public void sortDesc(int value){
+    public void sortDesc(E value) {
+        E x;
+        for (int k = 0; k < array.length; k++) {
+            if(array[k] == value)
+            for (int i = k; i < array.length; i++) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (array[i].doubleValue() < array[j].doubleValue()) {
+                        x = array[i];
+                        array[i] = array[j];
+                        array[j] = x;
+                    }
+                }
+            }
+        }
 
     }
 

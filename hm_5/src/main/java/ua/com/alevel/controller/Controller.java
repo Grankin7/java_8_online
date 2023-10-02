@@ -34,10 +34,10 @@ public class Controller {
         System.out.println("7 -  об'єднує з іншими MatList, залишаючи тільки ті елементи, які є в усіх колекціях");
         System.out.println("8 -  сортує колекцію від найбільшого");
         System.out.println("9 -  сортує колекцію від найбільшого тільки ті елементи, які лежать між firstIndex та lastIndex");
-//        System.out.println("10 - сортує колекцію від найбільшого починаючи з value");
+        System.out.println("10 - сортує колекцію від найбільшого починаючи з value");
         System.out.println("11 -  сортує колекцію від найменшого");
         System.out.println("12 - сортує колекцію від найменшого тільки ті елементи, які лежать між firstIndex та lastIndex");
-//        System.out.println("13 - сортує колекцію від найменшого починаючи з value");
+        System.out.println("13 - сортує колекцію від найменшого починаючи з value");
         System.out.println("14 - вивести значення по index");
         System.out.println("15 - вивести максимальне значення");
         System.out.println("16 - вивести мінімальне значення");
@@ -62,10 +62,10 @@ public class Controller {
             case "7" -> intersection();
             case "8" -> sortDesc();
             case "9" -> sortDescByIndex();
-
+            case "10" -> sortDescByValue();
             case "11" -> sortAsc();
             case "12" -> sortAscByIndex();
-
+            case "13" -> sortAscByValue();
             case "14" -> get();
             case "15" -> getMax();
             case "16" -> getMin();
@@ -120,6 +120,15 @@ public class Controller {
         System.out.println("Напиши index значення якого хочешь отримати");
         int index = scanner.nextInt();
         matList.get(index);
+    }
+
+    public void sortAscByValue(){
+        matList.print();
+        System.out.println(" ");
+        System.out.println("Напиши value");
+        int value = scanner.nextInt();
+        matList.sortAsc(value);
+        matList.print();
     }
 
     public void sortAscByIndex(){
