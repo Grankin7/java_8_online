@@ -228,15 +228,13 @@ public class MatList<E extends Number>  {
                 if (array[i] == num) {
                     delete[i] = true;
                     newSize++;
-                    break; // Если элемент удален, переходим к следующему
+                    break;
                 }
             }
         }
 
-        // Создаем новый массив
         int[] newArray = new int[array.length - newSize];
 
-        // Копируем элементы из исходного массива в новый массив, исключая delete элементы
         int newIndex = 0;
         for (int i = 0; i < array.length; i++) {
             if (!delete[i]) {
