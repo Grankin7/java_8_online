@@ -1,5 +1,6 @@
 package ua.com.alevel.matList;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.lang.reflect.Array;
 
 public class MatList<E extends Number>  {
@@ -213,5 +214,41 @@ public class MatList<E extends Number>  {
         }
         return newArray;
     }
+
+    public void clear() {
+        this.array = (E[]) new Number[0];
+    }
+
+    public void clear(E ...nums) {
+        int newSize = 0;
+        boolean[] delete = new boolean[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            for (E num : nums) {
+                if (array[i] == num) {
+                    delete[i] = true;
+                    newSize++;
+                    break; // Если элемент удален, переходим к следующему
+                }
+            }
+        }
+
+        // Создаем новый массив
+        int[] newArray = new int[array.length - newSize];
+
+        // Копируем элементы из исходного массива в новый массив, исключая delete элементы
+        int newIndex = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!delete[i]) {
+                newArray[newIndex] = array[i].intValue();
+                newIndex++;
+            }
+        }
+
+        for (int i = 0; i < newArray.length; i++) {
+            System.out.print(newArray[i] + " ");
+        }
+    }
+
 
 }

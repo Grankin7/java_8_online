@@ -44,11 +44,11 @@ public class Controller {
         System.out.println("17 - віддає середнє значення");
         System.out.println("18 - віддає медіану");
 
-        System.out.println("19- ");
-//        System.out.println("17 - ");
+        System.out.println("19- вивести массив");
+        System.out.println("20 - вивести массив по index");
         System.out.println("21 - вирізає з firstIndex по lastIndex");
-//        System.out.println("19 - удаляє всі елементи");
-//        System.out.println("20 - удаляє елемент по индексу ");
+        System.out.println("22 - удаляє всі елементи");
+        System.out.println("23 - удаляє елемент по индексу");
     }
 
     private void MathOperations(String position, BufferedReader bufferedReader) throws IOException {
@@ -71,11 +71,34 @@ public class Controller {
             case "16" -> getMin();
             case "17" -> getAverage();
             case "18" -> getMedian();
-
+            case "19" -> matList.print();
+            case "20" ->  cut();
             case "21" ->  cut();
+            case "22" -> clear();
+            case "23" -> clearNumbers();
         }
 
     }
+
+    public void clear(){
+        matList.clear();
+        matList.print();
+    }
+
+    public void clearNumbers(){
+        matList.print();
+        System.out.println("Напиши кількість елементів для видалення");
+        int sizeArray = scanner.nextInt();
+
+        Integer[] array = new Integer[sizeArray];
+        System.out.println("Напиши елементи массиву через space які хочете видалити");
+        for (int i = 0; i < sizeArray; i++) {
+            array[i] = scanner.nextInt();
+        }
+        System.out.print("Ваш новий массив: ");
+        matList.clear(array);
+    }
+
 
     public void  cut(){
         matList.print();
