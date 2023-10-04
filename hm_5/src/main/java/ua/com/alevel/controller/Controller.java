@@ -43,12 +43,12 @@ public class Controller {
         System.out.println("16 - вивести мінімальне значення");
         System.out.println("17 - віддає середнє значення");
         System.out.println("18 - віддає медіану");
-
         System.out.println("19- вивести массив");
         System.out.println("20 - вивести массив по index");
         System.out.println("21 - вирізає з firstIndex по lastIndex");
         System.out.println("22 - удаляє всі елементи");
         System.out.println("23 - удаляє елемент по индексу");
+        System.out.println("24 - вийти");
     }
 
     private void MathOperations(String position, BufferedReader bufferedReader) throws IOException {
@@ -76,6 +76,7 @@ public class Controller {
             case "21" ->  cut();
             case "22" -> clear();
             case "23" -> clearNumbers();
+            case "24" -> finish();
             default -> System.out.println("Невірний вибір операції. Спробуйте ще раз.");
         }
 
@@ -279,6 +280,12 @@ public class Controller {
         System.out.print("Ваш новий массив: ");
         matList.add(addedElement);
         matList.print();
+    }
+
+    public void finish() {
+        System.out.println("Дякую за використання словника!");
+        scanner.close();
+        System.exit(0);
     }
 
 }
