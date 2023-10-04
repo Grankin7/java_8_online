@@ -76,6 +76,7 @@ public class Controller {
             case "21" ->  cut();
             case "22" -> clear();
             case "23" -> clearNumbers();
+            default -> System.out.println("Невірний вибір операції. Спробуйте ще раз.");
         }
 
     }
