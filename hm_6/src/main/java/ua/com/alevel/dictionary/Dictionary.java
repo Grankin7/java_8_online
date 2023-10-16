@@ -1,4 +1,5 @@
 package ua.com.alevel.dictionary;
+
 import java.util.*;
 
 public class Dictionary<K, V> {
@@ -80,7 +81,7 @@ public class Dictionary<K, V> {
         return size;
     }
 
-    public V get(K key ) {
+    public V get(K key) {
         for (int i = 0; i < size; i++) {
             if (Objects.equals(key, keys[i])) {
                 return (V) values[i];
@@ -122,7 +123,7 @@ public class Dictionary<K, V> {
     }
 
     public boolean isEmpty() {
-        if(size == 0) {
+        if (size == 0) {
             System.out.println("Пустой");
             return true;
         }
@@ -146,17 +147,14 @@ public class Dictionary<K, V> {
     }
 
     public void noteTest() {
-        put((K) "1", (V)  "apple");
-        put((K) "2", (V)  "banana");
-        put((K) "3", (V)  "orange");
+        put((K) "1", (V) "apple");
+        put((K) "2", (V) "banana");
+        put((K) "3", (V) "orange");
     }
 
     public void secondNoteTest() {
-        put((K) "4", (V)  "apple2");
-        put((K) "5", (V)  "banana2");
-        put((K) "6", (V)  "orange2");
+        put((K) "4", (V) "apple2");
+        put((K) "5", (V) "banana2");
+        put((K) "6", (V) "orange2");
     }
-
 }
-
-
