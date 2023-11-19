@@ -17,19 +17,19 @@ public class BuilderCrudServiceImpl implements BuilderCrudService {
         builderDao.create(builder);
     }
 
+
     @Override
     public void update(Builder builder) {
         if (!builderDao.existsById(builder.getId())) {
-            throw new RuntimeException("Student not found");
+            throw new RuntimeException("Builder not found");
         }
         builderDao.update(builder);
-
     }
 
     @Override
     public void delete(String id) {
         if (!builderDao.existsById(id)) {
-            throw new RuntimeException("Student not found");
+            throw new RuntimeException("Builder not found");
         }
         builderDao.delete(id);
     }
@@ -38,7 +38,7 @@ public class BuilderCrudServiceImpl implements BuilderCrudService {
     public Builder findOne(String id) {
         Optional<Builder> optionalBuilder = builderDao.findById(id);
         if(optionalBuilder.isEmpty()) {
-            throw new RuntimeException("Student not found");
+            throw new RuntimeException("Builder not found");
         }
         return optionalBuilder.get();
     }
@@ -46,5 +46,10 @@ public class BuilderCrudServiceImpl implements BuilderCrudService {
     @Override
     public Collection<Builder> findAll() {
         return builderDao.findAll();
+    }
+
+    @Override
+    public Builder[] findByIds(String[] ids) {
+        return builderDao.findByIds(ids);
     }
 }

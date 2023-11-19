@@ -14,6 +14,16 @@ import java.util.*;
 public class JsonBuilderDao implements BuilderDao {
     List<Builder> builderList = new ArrayList<>();
 
+    public Builder[] findByIds(String[] ids) {
+        readJson();
+        List<String> idsList = Arrays.asList(ids);
+        Builder[] result = builderList.stream()
+                .filter(s -> idsList.contains(s.getId()))
+                .toArray(Builder[]::new);
+
+        return result;
+    }
+
     public void create(Builder builder) {
         readJson();
         builder.setId(DbuUtil.generateId(builderList));

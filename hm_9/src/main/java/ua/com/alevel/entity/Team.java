@@ -3,16 +3,25 @@ package ua.com.alevel.entity;
 public class Team extends BaseEntity {
 
     String nameTeam;
-    String specialization;
-    String idBuilders;
+    String[] builderIds;
 
-    public String getIdBuilders() {
-        return idBuilders;
+    public String[] getBuilderIds() {
+        return builderIds;
     }
 
-    public void setIdBuilders(String idBuilders) {
-        this.idBuilders = idBuilders;
+    public void setBuilderIds(String[] builderIds) {
+        this.builderIds = builderIds;
     }
+
+    public Team(String teamName , String[] builders){
+        this.nameTeam = teamName;
+        this.builderIds = builders;
+    }
+
+    public Team(){
+
+    }
+
 
     public String getNameTeam() {
         return nameTeam;
@@ -22,11 +31,4 @@ public class Team extends BaseEntity {
         this.nameTeam = nameTeam;
     }
 
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
 }

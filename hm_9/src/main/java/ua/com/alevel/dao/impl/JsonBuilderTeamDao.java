@@ -2,17 +2,14 @@ package ua.com.alevel.dao.impl;
 
 import com.google.gson.Gson;
 import ua.com.alevel.dao.BuilderTeamDao;
-import ua.com.alevel.entity.Builder;
 import ua.com.alevel.entity.Team;
+import ua.com.alevel.util.DbuUtil;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class JsonBuilderTeamDao implements BuilderTeamDao {
 
@@ -20,17 +17,56 @@ public class JsonBuilderTeamDao implements BuilderTeamDao {
 
     @Override
     public void create(Team team) {
-
+        readJson();
+        team.setId(DbuUtil.generateId(teamList));
+        teamList.add(team);
+        writeJson();
     }
 
     @Override
     public void update(Team team) {
-
+        readJson();
+        int index = -1;
+        for (int i = 0; i < teamList.size(); i++) {
+            if(teamList.get(i).getId().equals(team.getId())) {
+                index = i;
+            }
+        }
+        if(index != -1) {
+            teamList.set(index, team);
+        }
+        writeJson();
     }
 
     @Override
     public void delete(String id) {
+        readJson();
+        teamList.removeIf(team -> team.getId().equals(id));
+        writeJson();
+    }
 
+    public void deleteBuilder(String teamId, String builderId) {
+        readJson();
+        teamList = teamList.stream().map((team) -> {
+
+            if(team.getId().equals(teamId)){
+                System.out.println("found");
+                team.setBuilderIds( Arrays.stream(team.getBuilderIds()).filter(id -> !Objects.equals(id, builderId)).toArray(String[]::new));
+            }
+            return team;
+        }).toList();
+        writeJson();
+    }
+
+    @Override
+    public Optional<Team> findOne(String id) {
+        readJson();
+        return teamList.stream().filter(s -> s.getId().equals(id)).findFirst();
+    }
+
+    public boolean existsById(String id) {
+        readJson();
+        return teamList.stream().anyMatch(builder -> builder.getId().equals(id));
     }
 
     @Override
