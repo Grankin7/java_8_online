@@ -9,6 +9,5 @@ public class Main {
         System.out.println("Starting the third task");
         new task_three().taskThree();
 
-
     }
 }
