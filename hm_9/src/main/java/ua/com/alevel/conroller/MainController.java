@@ -129,6 +129,7 @@ public class MainController {
 
     private void createTeam(BufferedReader bufferedReader) throws IOException {
         System.out.println("Please enter name team");
+        System.out.println();
         String nameTeam = bufferedReader.readLine();
         System.out.println("Please enter specialization");
         String specialization = bufferedReader.readLine();
