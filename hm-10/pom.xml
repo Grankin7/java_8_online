@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.com.alevel</groupId>
-    <artifactId>test</artifactId>
+    <artifactId>hm-10</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -51,7 +51,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ua.com.alevel.CrudSqlMain</mainClass>
+                                    <mainClass>ua.com.alevel.SqlCrudMain</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -60,5 +60,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
