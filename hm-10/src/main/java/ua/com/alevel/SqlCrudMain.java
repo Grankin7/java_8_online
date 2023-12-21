@@ -9,5 +9,14 @@ public class SqlCrudMain {
     public static void main(String[] args) throws IOException {
         JdbcFactory.getInstance().initDB(SqlCrudMain.class);
         new MainController().start();
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
+        System.out.println("sfsedfewfew");
     }
+
 }
