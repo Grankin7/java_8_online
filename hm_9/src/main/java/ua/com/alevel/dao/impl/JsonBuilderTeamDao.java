@@ -18,7 +18,7 @@ public class JsonBuilderTeamDao implements BuilderTeamDao {
     @Override
     public void create(Team team) {
         readJson();
-        team.setId(DbuUtil.generateId(teamList));
+//        team.setId(DbuUtil.generateId(teamList));
         teamList.add(team);
         writeJson();
     }

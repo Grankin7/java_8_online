@@ -5,11 +5,10 @@ import ua.com.alevel.entity.BaseEntity;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface CrudDao<BE extends BaseEntity> {
-    void create(BE be);
-    void update(BE be);
+public interface CrudDao<E extends BaseEntity> {
+    void create(E entity);
+    void update(E entity);
     void delete(Long id);
-    //    boolean existsById(Long id);
-    Optional<BE> findById(Long id);
-    Collection<BE> findAll();
+    Optional<E> findById(Long id);
+    Collection<E> findAll();
 }

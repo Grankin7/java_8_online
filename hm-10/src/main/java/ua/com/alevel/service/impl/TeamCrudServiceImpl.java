@@ -1,6 +1,10 @@
 package ua.com.alevel.service.impl;
 
-import ua.com.alevel.dao.impl.JsonBuilderTeamDao;
+import ua.com.alevel.dao.BuilderDao;
+import ua.com.alevel.dao.Impl.BuilderDaoImpl;
+import ua.com.alevel.dao.Impl.TeamDaoImpl;
+import ua.com.alevel.dao.TeamDao;
+import ua.com.alevel.entity.Builder;
 import ua.com.alevel.entity.Team;
 import ua.com.alevel.service.TeamCrudService;
 
@@ -9,47 +13,38 @@ import java.util.Optional;
 
 public class TeamCrudServiceImpl implements TeamCrudService {
 
-    private BuilderCrudServiceImpl builderTeamImpl = new BuilderCrudServiceImpl();
-    private JsonBuilderTeamDao builderTeamDao = new JsonBuilderTeamDao();
-    @Override
-    public void create(String teamName, String[] builderIds) {
-        Team newTeam = new Team(teamName , builderIds);
+    BuilderDao builderDao = new BuilderDaoImpl();
+    TeamDao teamDao = new TeamDaoImpl();
 
-        builderTeamDao.create(newTeam);
+    @Override
+    public void create(Team team) {
+        teamDao.create(team);
     }
 
     @Override
     public void update(Team team) {
-        if (!builderTeamDao.existsById(team.getId())) {
-            throw new RuntimeException("Builder not found");
-        }
-        builderTeamDao.update(team);
+        teamDao.update(team);
     }
 
     @Override
-    public void delete(String id) {
-        if (!builderTeamDao.existsById(id)) {
-            throw new RuntimeException("Builder not found");
-        }
-        builderTeamDao.delete(id);
+    public void delete(Long id) {
+        teamDao.delete(id);
     }
 
     @Override
-    public void deleteBuilder(String teamId, String builderId) {
-        builderTeamDao.deleteBuilder(teamId, builderId);
-    }
-
-    @Override
-    public Team findOne(String id) {
-        Optional<Team> optionalTeam = builderTeamDao.findOne(id);
-        if(optionalTeam.isEmpty()) {
-            throw new RuntimeException("Team not found");
-        }
-        return optionalTeam.get();
+    public Team findOne(Long id) {
+        Optional<Team> optionalBuilder = teamDao.findById(id);
+        return optionalBuilder.get();
     }
 
     @Override
     public Collection<Team> findAll() {
-        return builderTeamDao.findAll();
+        return teamDao.findAll();
     }
+
+    public void attachBuilderToTeam(Long idT, Long idB) {
+        teamDao.attachBuilderToTeam(idT,idB);
+    }
+
+
 }
