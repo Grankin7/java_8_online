@@ -1,5 +1,12 @@
 package ua.com.alevel.conroller;
 
+import ua.com.alevel.entity.BankAccount;
+import ua.com.alevel.entity.User;
+import ua.com.alevel.service.BankAccountCrudService;
+import ua.com.alevel.service.UserCrudService;
+import ua.com.alevel.service.impl.BankAccountCrudServiceImpl;
+import ua.com.alevel.service.impl.UserCrudServiceImpl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +15,9 @@ import java.util.Collection;
 public class BillController {
 
     MainController mainController = new MainController();
+
+    private UserCrudService userCrudService = new UserCrudServiceImpl();
+    private BankAccountCrudService bankAccountCrudService = new BankAccountCrudServiceImpl();
 
     public void startBillsMenu() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -33,45 +43,86 @@ public class BillController {
     private void crud(String position, BufferedReader bufferedReader) throws IOException {
         switch (position) {
             case "1" -> create(bufferedReader);
-//            case "2" -> findOne(bufferedReader);
-//            case "3" -> findAll();
-//            case "4" -> delete(bufferedReader);
-//            case "5" -> update(bufferedReader);
+            case "2" -> findOne(bufferedReader);
+            case "3" -> findAll();
+            case "4" -> delete(bufferedReader);
+            case "5" -> update(bufferedReader);
             case "0" -> mainController.start();
         }
     }
 
     private void create(BufferedReader reader) throws IOException {
-        System.out.println("Enter first name");
-        String fn = reader.readLine();
-        System.out.println("Enter last name");
-        String ln = reader.readLine();
-        System.out.println("Enter age");
-        int age = Integer.parseInt(reader.readLine());
-//        User user = new User();
-//        user.setFirstName(fn);
-//        user.setLastName(ln);
-//        user.setAge(age);
-//        userCrudService.create(user);
+        UserCrudService userCrudService = new UserCrudServiceImpl();
+        BufferedReader bufferedReader = new BufferedReader(reader);
+
+        try {
+            System.out.println("Enter id user");
+            Long id = Long.valueOf(bufferedReader.readLine());
+
+            User user = userCrudService.findOne(id);
+            if (user == null) {
+                System.out.println("User with id " + id + " not found.");
+                return;
+            }
+
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.setUser(user);
+
+            System.out.println("Enter the amount");
+            Long sum = Long.valueOf(bufferedReader.readLine());
+            bankAccount.setSum(sum);
+
+            bankAccountCrudService.create(bankAccount);
+            System.out.println("Bank account created successfully.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input format. Please enter a valid number.");
+        }
+
     }
 
     private void findOne(BufferedReader reader) throws IOException {
         System.out.println("Enter id");
         String id = reader.readLine();
-//        User user = userCrudService.findOne(Long.parseLong(id));
-//        System.out.println("Id: " + user.getId());
-//        System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
-//        System.out.println("Age: " + user.getAge());
+        BankAccount bankAccount = bankAccountCrudService.findOne(Long.parseLong(id));
+        System.out.println("Id: " + bankAccount.getId());
+        System.out.println("Sum: " + bankAccount.getSum());
+
+        User user = userCrudService.findOne(bankAccount.getUser().getId());
+        System.out.println("Id: " + user.getId());
+        System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
     }
 
     private void findAll() {
-//        Collection<User> users = userCrudService.findAll();
-//        users.forEach(user -> {
-//            System.out.println("   ");
-//            System.out.println("Id: " + user.getId());
-//            System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
-//            System.out.println("Age: " + user.getAge());
-//        });
+        Collection<BankAccount> bankAccounts = bankAccountCrudService.findAll();
+        bankAccounts.forEach(bankAccount -> {
+            System.out.println(" ");
+            System.out.println("Id: " + bankAccount.getId());
+            System.out.println("Sum: " + bankAccount.getSum());
+        });
     }
+
+    private void delete(BufferedReader reader) throws IOException{
+        System.out.println("Enter id");
+        String id = reader.readLine();
+        bankAccountCrudService.delete(Long.parseLong(id));
+    }
+
+    private void update(BufferedReader bufferedReader) throws IOException {
+        System.out.println("Enter id bank account");
+        String idBankAccount = bufferedReader.readLine();
+        System.out.println("Enter the amount");
+        Long sum = Long.valueOf(bufferedReader.readLine());
+        System.out.println("Enter id user");
+        Long id = Long.valueOf(bufferedReader.readLine());
+
+        BankAccount bankAccount = new BankAccount();
+        User user = userCrudService.findOne(id);
+
+        bankAccount.setSum(sum);
+        bankAccount.setId(Long.parseLong(idBankAccount));
+        bankAccount.setUser(user);
+        bankAccountCrudService.update(bankAccount);
+    }
+
 
 }

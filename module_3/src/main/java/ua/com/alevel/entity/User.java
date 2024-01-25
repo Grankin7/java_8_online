@@ -2,9 +2,13 @@ package ua.com.alevel.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.SessionFactory;
+import ua.com.alevel.config.HibernateConfig;
+
 
 
 @Getter
@@ -43,4 +47,5 @@ public class User extends BaseEntity{
     public void setAge(int age) {
         this.age = age;
     }
+
 }
