@@ -16,6 +16,6 @@
 
         <mapping class="ua.com.alevel.entity.User"></mapping>
         <mapping class="ua.com.alevel.entity.BankAccount"></mapping>
-<!--        <mapping class="ua.com.alevel.entity.Salary"></mapping>-->
+        <mapping class="ua.com.alevel.entity.Operation"></mapping>
     </session-factory>
 </hibernate-configuration>

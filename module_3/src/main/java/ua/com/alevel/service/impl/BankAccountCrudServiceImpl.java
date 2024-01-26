@@ -3,7 +3,7 @@ package ua.com.alevel.service.impl;
 import ua.com.alevel.dao.BankAccountDao;
 import ua.com.alevel.dao.impl.BankAccountDaoImpl;
 import ua.com.alevel.entity.BankAccount;
-import ua.com.alevel.entity.User;
+import ua.com.alevel.entity.Operation;
 import ua.com.alevel.service.BankAccountCrudService;
 
 import java.util.Collection;
@@ -37,4 +37,5 @@ public class BankAccountCrudServiceImpl implements BankAccountCrudService {
     public Collection<BankAccount> findAll() {
         return bankAccountDao.findAll();
     }
+
 }
