@@ -38,20 +38,19 @@ public class OperationController {
         System.out.println();
         System.out.println("Operation Menu:");
         System.out.println("1 - Create operation");
-
+        System.out.println("2 - Find operation");
         System.out.println("3 - Find all operation");
-        System.out.println("6 - Test");
+        System.out.println("4 - Delete account");
         System.out.println("Go back enter 0");
     }
 
     private void crud(String position, BufferedReader bufferedReader) throws IOException {
         switch (position) {
             case "1" -> create(bufferedReader);
-//            case "2" -> findOne(bufferedReader);
+            case "2" -> findOne(bufferedReader);
             case "3" -> findAll();
-//            case "4" -> delete(bufferedReader);
+            case "4" -> delete(bufferedReader);
 //            case "5" -> update(bufferedReader);
-            case "6" -> updateSum(1L, 3L, 10L);
             case "0" -> mainController.start();
         }
     }
@@ -61,9 +60,9 @@ public class OperationController {
 
         try {
             System.out.println(" ");
-            System.out.println("Who transfer money write the ID:");
+            System.out.println("Who transfer money write the bill ID:");
             String transfer = reader.readLine();
-            System.out.println("Who receives money write the ID:");
+            System.out.println("Who receives money write the bill ID:");
             String receives = reader.readLine();
             System.out.println("Amount to transfer money:");
 
@@ -109,23 +108,19 @@ public class OperationController {
             System.out.println("Amount: " + operation.getSum());
 
             User userWhoTransfers = userCrudService.findOne(operation.getUserWhoTransfers().getId());
-            System.out.println(" ");
             System.out.println("Who Transfer: ");
             System.out.println("Id: " + userWhoTransfers.getId());
             System.out.println("Name: " + userWhoTransfers.getFirstName() + " " + userWhoTransfers.getLastName());
 
             User user = userCrudService.findOne(operation.getUserWhoGets().getId());
-            System.out.println(" ");
             System.out.println("Who Get: ");
             System.out.println("Id: " + user.getId());
             System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
-
+            System.out.println("---------------------------------");
         });
     }
 
     private void updateSum(Long idUserWhoTransfers, Long idUserWhoGets, Long sumTransactions) throws IOException {
-        OperationDaoImpl operationDao = new OperationDaoImpl();
-
         BankAccount userWhoTransfers = bankAccountCrudService.findOne(idUserWhoTransfers);
         BankAccount userWhoGets = bankAccountCrudService.findOne(idUserWhoGets);
 
@@ -138,10 +133,32 @@ public class OperationController {
         Long updateSumUserWhoGets = SumUserWhoGets + sumTransactions;
         userWhoGets.setSum(updateSumUserWhoGets);
 
-
         bankAccountCrudService.update(userWhoTransfers);
         bankAccountCrudService.update(userWhoGets);
     }
 
+    private void findOne(BufferedReader reader) throws IOException {
+        System.out.println("Enter id");
+        String id = reader.readLine();
+        Operation operation = operationCrudService.findOne(Long.parseLong(id));
+        System.out.println("Id operation: " + operation.getId());
+        System.out.println("Amount: " + operation.getSum());
+
+        User userWhoTransfers = userCrudService.findOne(operation.getUserWhoTransfers().getId());
+        System.out.println("Who Transfer: ");
+        System.out.println("Id: " + userWhoTransfers.getId());
+        System.out.println("Name: " + userWhoTransfers.getFirstName() + " " + userWhoTransfers.getLastName());
+
+        User user = userCrudService.findOne(operation.getUserWhoGets().getId());
+        System.out.println("Who Get: ");
+        System.out.println("Id: " + user.getId());
+        System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
+    }
+
+    private void delete(BufferedReader reader) throws IOException{
+        System.out.println("Enter id");
+        String id = reader.readLine();
+        operationCrudService.delete(Long.parseLong(id));
+    }
 
 }

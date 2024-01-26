@@ -66,45 +66,45 @@ public class BankAccountDaoImpl implements BankAccountDao {
         return false;
     }
 
-//    @Override
-//    public Optional<BankAccount> findById(Long id) {
-//        Transaction transaction = null;
-//        try(Session session = sessionFactory.getCurrentSession()) {
-//            transaction = session.beginTransaction();
-//            BankAccount bankAccount = session.get(BankAccount.class, id);
-//            transaction.commit();
-//            return Optional.of(bankAccount);
-//        } catch (Exception e){
-//            if(transaction != null) {
-//                transaction.rollback();
-//            }
-//        }
-//
-//        return Optional.empty();
-//    }
-
-    public Optional<BankAccount> findById(Long userId) {
+    @Override
+    public Optional<BankAccount> findById(Long id) {
         Transaction transaction = null;
-        try (Session session = sessionFactory.getCurrentSession()) {
+        try(Session session = sessionFactory.getCurrentSession()) {
             transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM BankAccount WHERE user_id = :userId", BankAccount.class);
-            query.setParameter("userId", userId);
-            query.setMaxResults(1);
-            List<BankAccount> bankAccounts = query.getResultList();
+            BankAccount bankAccount = session.get(BankAccount.class, id);
             transaction.commit();
-
-            if (!bankAccounts.isEmpty()) {
-                return Optional.of(bankAccounts.get(0));
-            } else {
-                return Optional.empty();
-            }
-        } catch (Exception e) {
-            if (transaction != null) {
+            return Optional.of(bankAccount);
+        } catch (Exception e){
+            if(transaction != null) {
                 transaction.rollback();
             }
-            return Optional.empty();
         }
+
+        return Optional.empty();
     }
+
+//    public Optional<BankAccount> findById(Long userId) {
+//        Transaction transaction = null;
+//        try (Session session = sessionFactory.getCurrentSession()) {
+//            transaction = session.beginTransaction();
+//            Query query = session.createQuery("FROM BankAccount WHERE user_id = :userId", BankAccount.class);
+//            query.setParameter("userId", userId);
+//            query.setMaxResults(1);
+//            List<BankAccount> bankAccounts = query.getResultList();
+//            transaction.commit();
+//
+//            if (!bankAccounts.isEmpty()) {
+//                return Optional.of(bankAccounts.get(0));
+//            } else {
+//                return Optional.empty();
+//            }
+//        } catch (Exception e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            return Optional.empty();
+//        }
+//    }
 
     @Override
     public Collection<BankAccount> findAll() {

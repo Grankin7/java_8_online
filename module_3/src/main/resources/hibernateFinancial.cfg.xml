@@ -9,7 +9,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">Test123!</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
-        <property name="hibernate.show_sql">true</property>
+<!--        <property name="hibernate.show_sql">true</property>-->
         <property name="connection.pool_size">3</property>
         <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
         <property name="hbm2ddl.auto">update</property>
