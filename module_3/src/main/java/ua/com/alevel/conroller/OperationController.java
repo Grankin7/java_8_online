@@ -1,5 +1,6 @@
 package ua.com.alevel.conroller;
 
+import ua.com.alevel.dao.impl.ExportToCSV;
 import ua.com.alevel.dao.impl.OperationDaoImpl;
 import ua.com.alevel.entity.BankAccount;
 import ua.com.alevel.entity.Operation;
@@ -41,6 +42,7 @@ public class OperationController {
         System.out.println("2 - Find operation");
         System.out.println("3 - Find all operation");
         System.out.println("4 - Delete account");
+        System.out.println("5 - Export to CVS");
         System.out.println("Go back enter 0");
     }
 
@@ -50,6 +52,7 @@ public class OperationController {
             case "2" -> findOne(bufferedReader);
             case "3" -> findAll();
             case "4" -> delete(bufferedReader);
+            case "5" -> exportToCVS();
 //            case "5" -> update(bufferedReader);
             case "0" -> mainController.start();
         }
@@ -159,6 +162,10 @@ public class OperationController {
         System.out.println("Enter id");
         String id = reader.readLine();
         operationCrudService.delete(Long.parseLong(id));
+    }
+
+    private void exportToCVS() {
+        ExportToCSV exportToCSV = new ExportToCSV();
     }
 
 }
